@@ -141,6 +141,15 @@ Cloud applications require scalable and reliable computing resources. The object
 
 ---
 
+### SUBMISSION DETAILS
+
+<img width="1537" height="592" alt="SUB" src="https://github.com/user-attachments/assets/dbaf4d78-f05c-42d1-a51d-149eb4c4c364" />
+
+### GRADES
+
+
+<img width="1918" height="982" alt="image" src="https://github.com/user-attachments/assets/c445cc82-97cd-491c-9714-fb713f6ea8e8" />
+
 
 ## Result
 
