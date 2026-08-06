@@ -1,64 +1,147 @@
-# Ex--3-AWS-Account-setup-and-S3-creation
+# CLOUD STORAGE CREATION (S3) AND LAUNCHING AN (EC2) INSTANCE IN AWS (AWS EC2 Web Server Lab)
 
-# Name :VESHWANTH .
-# Reg.no : 212224230300
+### Register Number : 212224230300
+### Name : VESHWANTH.
+## Aim
 
-# Introduction
+To understand the basic operations of Amazon Elastic Compute Cloud (EC2) by launching, configuring, monitoring, resizing, and managing an EC2 instance that hosts a simple Apache web server.
 
-In this lab, we are going to be introduced to one of the famous Cloud Service providers, Amazon Web Services (AWS). We will work on Amazon Simple Storage Service (S3), which provides storage through web service interfaces (REST, SOAP, and BitTorrent). In S3, the data is stored in the form of buckets. Buckets serve as root folders where we can add, create, or upload files and folders. We can create multiple buckets for different purposes, and each bucket can have different access control policies.
+---
 
-## Objectives
+## Problem Statement
 
-- Create a Bucket in Amazon S3.
-- Add Objects (files and folders) to the bucket.
-- Access, move, download, and delete the objects.
-- Delete the Bucket.
+Cloud applications require scalable and reliable computing resources. The objective of this experiment is to learn how to deploy a virtual server on Amazon EC2, configure networking and security settings, host a web application using Apache HTTP Server, monitor the instance, modify its resources, and explore EC2 protection mechanisms and service limits.
 
-## Illustration
+---
 
-### Step 1: Choose S3 Service
+## Algorithm / Procedure
 
-Choose the S3 service from the list of services provided by AWS.
+1. Log in to the AWS Management Console.
+2. Navigate to the EC2 Dashboard.
+3. Launch a new EC2 instance using the Amazon Linux 2023 AMI.
+4. Select the `t2.micro` instance type.
+5. Configure the required VPC and subnet.
+6. Create a Security Group.
+7. Enable termination protection.
+8. Add the User Data script to automatically install and start the Apache web server.
+9. Launch the EC2 instance.
+10. Wait until the instance status changes to **Running**.
+11. Monitor the instance using the **Status Checks** and **CloudWatch Monitoring** tabs.
+12. Edit the Security Group to allow inbound HTTP (Port 80) traffic.
+13. Access the web server using the public IPv4 address.
+14. Stop the instance and change the instance type to **t2.small**.
+15. Increase the EBS volume size from **8 GB** to **10 GB**.
+16. Enable and test Stop Protection.
+17. Explore EC2 Service Quotas.
+18. Disable Stop Protection and stop the instance successfully.
 
-(![image](https://github.com/user-attachments/assets/d641bb01-a8f8-405c-914b-5ff7840a539d))
+---
 
-### Step 2: Create a Unique Bucket
+## Outputs
 
-After selecting the S3 service, click on the "Create Bucket" button on the page. The bucket name must be unique, contain no uppercase letters, and have no special characters. If you enter any of these, an error will display, preventing the bucket from being created.
 
-![image](https://github.com/user-attachments/assets/6a447548-5dbb-4bee-be9a-14823d0bf6b0)
-![image](https://github.com/user-attachments/assets/8f0c2e75-1106-4666-b67d-6335aab13ab8)
-![image](https://github.com/user-attachments/assets/216498f3-1fbd-457e-b930-9589d28be372)
-![image](https://github.com/user-attachments/assets/9ed831a6-3a1c-4aee-90d9-d871af80bd6c)
-![image](https://github.com/user-attachments/assets/e32fc9f3-c82a-4b72-8b10-7a0477f9ccd6)
+### EC2 Instance Launch
 
-For region selection, choose a region from the available list. It is recommended to select a region nearby your location for higher availability. In this lab, I selected Sydney, as it is near my country, New Zealand. Remember to provide a unique bucket name with no special characters or uppercase letters.
+<img width="1918" height="981" alt="1" src="https://github.com/user-attachments/assets/878341d6-28f1-4ddc-adf1-229b58969a8f" />
 
-### Step 3: Upload Files to the Bucket
+<img width="1918" height="972" alt="2" src="https://github.com/user-attachments/assets/b3a130ad-a413-4d6b-ab53-66122352cecd" />
 
-Now, I have uploaded some files into the bucket I just created. There are no restrictions on uploading file types, but the size of each file must be less than 5 terabytes.
+---
 
-![image](https://github.com/user-attachments/assets/b4aa897c-f2e2-4473-8f90-595b530529e9)
-![image](https://github.com/user-attachments/assets/3a137296-7bce-474e-9aee-90f1270da0b5)
+### Web Server Instance Details
+<img width="1918" height="973" alt="3" src="https://github.com/user-attachments/assets/9b0c5ff2-f2e8-43ec-8635-f34b07eaa44c" />
 
-You can upload files of any extension, folders, and subfolders. The images below explain that you can drag and drop files or select them from your computer. After uploading a file, you can download, cut, copy, make it public, rename, or delete it. Making a file public means everyone can access it, and you will receive a link (e.g., `https://s3-ap-southeast-2.amazonaws.com/...`) to share it.
 
-![image](https://github.com/user-attachments/assets/5f1fee62-d590-494f-8345-aeb80745e810)
-![image](https://github.com/user-attachments/assets/b3030041-ce14-43a8-8e6c-4c26a875d52e)
+---
 
-### Step 4: Upload a Folder
+### Security Group Configuration
 
-You can also upload a folder to the bucket. If your local folder contains subfolders and data, all data inside the parent folder will be uploaded. The images below show how to upload a folder by dragging and dropping or browsing.
+<img width="1918" height="995" alt="5" src="https://github.com/user-attachments/assets/f9d0a175-8d00-45cc-92ab-67a3aaabf095" />
 
-![image](https://github.com/user-attachments/assets/f0ad8c4e-0d66-490f-a4e0-3ecc1d39ba25)
+<img width="1918" height="971" alt="6" src="https://github.com/user-attachments/assets/53f8f611-9896-4168-b187-b55b046e4d46" />
 
-### Step 5: Delete the Bucket
 
-To delete a bucket, you must retype the bucket name. This policy is implemented by Amazon to confirm your action because deleting a bucket can remove large amounts of data.
+### EDIT INBOUND RULES INSIDE WEB SECURITY(SECURITY GROUP)
 
-![image](https://github.com/user-attachments/assets/c09b5618-9d48-4d70-b59a-e76dd9c163f6)
-![image](https://github.com/user-attachments/assets/a90ffaae-5bbd-4306-9227-f6f4dd715395)
+<img width="1915" height="986" alt="7" src="https://github.com/user-attachments/assets/f1aa4e6f-db8d-4ec8-b483-b900fb3d3e71" />
+
+<img width="1918" height="982" alt="8" src="https://github.com/user-attachments/assets/3766c205-a5b6-481e-93ec-f91450bec25e" />
+
+### STOPPING THE NEWLY CREATED WEB SERVER INSTANCES
+
+<img width="1918" height="990" alt="9" src="https://github.com/user-attachments/assets/8de85e5d-5b4e-4439-ab84-a1dd0fb49f1d" />
+
+### CHANGING WEB SERVER INSTANCE TYPE
+
+<img width="1918" height="977" alt="10" src="https://github.com/user-attachments/assets/3ef9757b-5ac4-4473-ae59-47d20dec568c" />
+
+<img width="1918" height="973" alt="11" src="https://github.com/user-attachments/assets/fbd915d7-9e35-40bc-b143-0465280c0814" />
+
+
+### DISABLING STOP PROTECTION FOR WEB SERVER INSTANCE
+
+<img width="1918" height="992" alt="12" src="https://github.com/user-attachments/assets/ceaa7d9f-b2da-487f-8259-b6d8749d5092" />
+
+
+### MODIFYING EBS VOLUME INSIDE THE VOLUMES SECTION
+
+<img width="1918" height="987" alt="13" src="https://github.com/user-attachments/assets/b3033209-2850-437a-b54b-e5511d4fef03" />
+
+<img width="1918" height="977" alt="14" src="https://github.com/user-attachments/assets/4fd2396e-ad06-4cf6-9577-871c0cc35128" />
+
+
+
+### RESTARING WEB SERVER INSTANCE
+
+<img width="1917" height="985" alt="15" src="https://github.com/user-attachments/assets/f828f5ee-71c8-456a-aea0-a8a823975eff" />
+
+### OVERVIEW OF AMAZON ELASTIC COMPUTE CLOUD(AMAZON EC2)
+
+<img width="1915" height="973" alt="16" src="https://github.com/user-attachments/assets/042d2a9a-efff-431a-bb51-a9c2691ba2f4" />
+
+<img width="1918" height="970" alt="17" src="https://github.com/user-attachments/assets/cf27fc82-0365-42f7-9be6-76dde39a3b86" />
+
+<img width="1910" height="985" alt="18" src="https://github.com/user-attachments/assets/25ce596e-dc0f-4c9b-aa76-e3bd946b8fb3" />
+
+
+### STOPPING THE WEB SERVER INSTANCE(FAILED TO STOP)
+
+<img width="1918" height="986" alt="19" src="https://github.com/user-attachments/assets/eecaceb4-c1c9-4d25-afe9-0a947241a343" />
+
+### SUCCESSFULLY STOPPED INSTANCE
+
+<img width="1918" height="982" alt="20" src="https://github.com/user-attachments/assets/752f1e5f-ae8e-45a3-8495-e0d3497b1966" />
+
+
+---
+
+### EC2 Monitoring
+
+<img width="1918" height="978" alt="4" src="https://github.com/user-attachments/assets/5d2cbff0-c389-4e33-982b-69ad804fc344" />
+
+<img width="1920" height="1080" alt="Screenshot 2026-08-04 093529" src="https://github.com/user-attachments/assets/f55dbfe3-57c7-49ed-9335-52f6f2b1ac8e" />
+
+---
+
+### EC2 System Log
+<img width="1920" height="1080" alt="Screenshot 2026-08-04 093634" src="https://github.com/user-attachments/assets/7a6a424a-534a-4f34-afc9-13aed5758ece" />
+
+---
+
+### EC2 Monitoring Diagnosis
+
+<img width="1920" height="1080" alt="Screenshot 2026-08-06 105514" src="https://github.com/user-attachments/assets/4cb2d65a-a43a-4dc3-a9ae-1dfb877fe18d" />
+
+---
+
+### Apache Web Server Output
+
+<img width="1450" height="717" alt="image" src="https://github.com/user-attachments/assets/e90e21db-3b4f-4b04-bc58-714d4f6c3adc" />
+
+
+---
+
 
 ## Result
 
-Successfully created, managed, and deleted an S3 bucket on AWS, demonstrating the ability to upload, access, and control objects within Amazon S3.
+Successfully launched and managed an Amazon EC2 instance, configured security settings, deployed an Apache web server using User Data, monitored the instance, resized the instance and storage volume, tested instance protection features, and explored Amazon EC2 service quotas.
